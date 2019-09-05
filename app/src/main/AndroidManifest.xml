@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.example.mycontacts">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <permission android:name="com.example.mycontacts.LIST_PROVIDER_PERMISSION"
+        android:label="list_permission" android:protectionLevel="dangerous">
+    </permission>
+
+    <application
+        android:networkSecurityConfig="@xml/network_security_config"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme"
+        tools:ignore="GoogleAppIndexingWarning">
+
+        <activity android:exported="false" android:name=".ui.login.ContactListActivity">
+        </activity>
+
+        <activity
+            android:name=".ui.login.LoginActivity"
+            android:label="@string/app_name">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <provider android:name=".ui.login.ContactsProvider"
+            android:permission="com.example.mycontacts.LIST_PROVIDER_PERMISSION"
+            android:authorities="com.example.MyApplication.ContactsProvider"/>
+    </application>
+
+</manifest>
